@@ -97,21 +97,27 @@
             height: auto;
         }
 
-        /* Fix Chatbot Message Alignment */
-        #VG_OVERLAY_CONTAINER .chat-message {
+        /* ✅ Force Chatbot Messages & Buttons to Align Left */
+        #VG_OVERLAY_CONTAINER .chat-message,
+        #VG_OVERLAY_CONTAINER .chat-text,
+        #VG_OVERLAY_CONTAINER .vg-message,
+        #VG_OVERLAY_CONTAINER .vg-bubble {
             text-align: left !important;
             justify-content: flex-start !important;
-            display: flex !important;
             align-items: flex-start !important;
+            display: flex !important;
+            flex-direction: row !important;
         }
 
-        /* Force buttons & messages inside chatbot to align properly */
-        #VG_OVERLAY_CONTAINER .chat-button,
-        #VG_OVERLAY_CONTAINER .chat-text {
+        /* ✅ Force Chatbot Buttons to Align Left */
+        #VG_OVERLAY_CONTAINER .chat-button-container,
+        #VG_OVERLAY_CONTAINER .vg-button-container {
             text-align: left !important;
             display: flex !important;
             justify-content: flex-start !important;
+            flex-wrap: wrap !important;
         }
+
     </style>
 </head>
 
