@@ -96,6 +96,22 @@
             width: auto;
             height: auto;
         }
+
+        /* Fix Chatbot Message Alignment */
+        #VG_OVERLAY_CONTAINER .chat-message {
+            text-align: left !important;
+            justify-content: flex-start !important;
+            display: flex !important;
+            align-items: flex-start !important;
+        }
+
+        /* Force buttons & messages inside chatbot to align properly */
+        #VG_OVERLAY_CONTAINER .chat-button,
+        #VG_OVERLAY_CONTAINER .chat-text {
+            text-align: left !important;
+            display: flex !important;
+            justify-content: flex-start !important;
+        }
     </style>
 </head>
 
