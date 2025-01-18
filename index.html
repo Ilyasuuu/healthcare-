@@ -1,160 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Healthcare Chatbot</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Healthcare website</title>
+    </head>
+    <body>
+        <h1>Demo</h1>
+        <p>This is basically your website here :)</p>
+        <p></p>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
         
-        /* Body Styling with Blurry Background */
-        body {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            overflow: hidden;
+<div style="width: 0; height: 0;" id="VG_OVERLAY_CONTAINER">
+    <!-- Here is where TIXAE Agents renders the widget. -->
+    <!-- Set render to 'full-width' then adjust the width and height to 500px (for example) to render the chatbot itself without the popup. -->
+</div>
+
+<!-- Remove 'defer' if you want widget to load faster (Will affect website loading) -->
+<script defer>
+    (function() {
+        window.VG_CONFIG = {
+            ID: "7ejqq4v39l3iqt9o", // YOUR AGENT ID
+            region: 'eu', // YOUR ACCOUNT REGION 
+            render: 'bottom-right', // can be 'full-width' or 'bottom-left' or 'bottom-right'
+            stylesheets: [
+                // Base TIXAE Agents CSS
+                "https://vg-bunny-cdn.b-cdn.net/vg_live_build/styles.css",
+                // Add your custom css stylesheets, Can also add relative URL ('/public/your-file.css)
+            ],
+            // THIS IS SUPPOSED TO BE CHANGED OR REMOVED.
+            // user: {
+            //     name: 'John Doe', // User's name
+            //     email: 'johndoe@gmail.com', // User's email
+            //     phone: '+1234567890', // User's phone number
+            // }
+            // Optional user data -- end
+            // **
+            // userID: 'USER_ID', // If you want to use your own user_id
+            // autostart: true, // Whether to autostart the chatbot with the proactive message
         }
+        var VG_SCRIPT = document.createElement("script");
+        VG_SCRIPT.src = "https://vg-bunny-cdn.b-cdn.net/vg_live_build/vg_bundle.js";
+        VG_SCRIPT.defer = true; // Remove 'defer' if you want widget to load faster (Will affect website loading)
+        document.body.appendChild(VG_SCRIPT);
+    })()
+</script>
 
-        /* Blurry Background Image */
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://cdn.leonardo.ai/users/39fed851-e82e-43bd-b001-728b94832225/generations/ee27e9fb-76b0-40b5-9b9d-3caece33c6f0/b4f77fed-a3aa-40ea-81c5-f11ea83bf512.jpg?w=512') no-repeat center center/cover;
-            filter: blur(10px);
-            z-index: 0;
-        }
-
-        /* Dark Overlay to Enhance Text Visibility */
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 1;
-        }
-
-        /* Content Box (Above Blur & Overlay) */
-        .content {
-            position: relative;
-            z-index: 2;
-            max-width: 80%;
-        }
-
-        h1 {
-            font-size: 3rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        p {
-            font-size: 1.2rem;
-            font-weight: 300;
-            margin-bottom: 20px;
-        }
-
-        /* Call-To-Action Button */
-        .cta-button {
-            padding: 12px 24px;
-            font-size: 1.2rem;
-            color: white;
-            background: #007bff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .cta-button:hover {
-            background: #0056b3;
-        }
-        
-        /* Chatbot Widget Container */
-        #VG_OVERLAY_CONTAINER {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000; /* Ensure chatbot is above everything */
-            width: auto;
-            height: auto;
-        }
-
-        /* ✅ Force Chatbot Messages & Buttons to Align Left */
-        #VG_OVERLAY_CONTAINER .chat-message,
-        #VG_OVERLAY_CONTAINER .chat-text,
-        #VG_OVERLAY_CONTAINER .vg-message,
-        #VG_OVERLAY_CONTAINER .vg-bubble {
-            text-align: left !important;
-            justify-content: flex-start !important;
-            align-items: flex-start !important;
-            display: flex !important;
-            flex-direction: row !important;
-        }
-
-        /* ✅ Force Chatbot Buttons to Align Left */
-        #VG_OVERLAY_CONTAINER .chat-button-container,
-        #VG_OVERLAY_CONTAINER .vg-button-container {
-            text-align: left !important;
-            display: flex !important;
-            justify-content: flex-start !important;
-            flex-wrap: wrap !important;
-        }
-
-    </style>
-</head>
-
-<body>
-    <div class="overlay"></div>
-    
-    <div class="content">
-        <h1>Revolutionizing Healthcare with AI</h1>
-        <p>See how AI-powered chatbots transform patient experience!</p>
-        <button class="cta-button" onclick="openChatbot()">Try the Chatbot Now</button>
-    </div>
-
-    <!-- Chatbot Widget -->
-    <div id="VG_OVERLAY_CONTAINER"></div>
-
-    <script>
-        function openChatbot() {
-            // Opens the chatbot proactively
-            if (window.VG_CONFIG) {
-                window.VG_CONFIG.autostart = true;
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            window.VG_CONFIG = {
-                ID: "7ejqq4v39l3iqt9o",
-                region: 'eu',
-                render: 'bottom-right',
-                stylesheets: [
-                    "https://vg-bunny-cdn.b-cdn.net/vg_live_build/styles.css",
-                ],
-            };
-            var VG_SCRIPT = document.createElement("script");
-            VG_SCRIPT.src = "https://vg-bunny-cdn.b-cdn.net/vg_live_build/vg_bundle.js";
-            VG_SCRIPT.defer = true;
-            document.body.appendChild(VG_SCRIPT);
-        });
-    </script>
-</body>
-</html>
+    </body>
+</html>    
